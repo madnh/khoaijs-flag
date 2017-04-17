@@ -1,6 +1,4 @@
-var chai = require('chai'),
-    chai_assert = chai.assert,
-    Flag = require('../dist/flag.js');
+var chai_assert = chai.assert;
 
 describe('FLAG', function () {
     beforeEach(function () {
