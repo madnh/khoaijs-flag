@@ -1,10 +1,26 @@
 (function (root, factory) {
     if (typeof define === 'function' && define.amd) {
-        define([], function () {
-            return root.Flag = factory();
+        define(["require"], function (require) {
+            var module = factory();
+
+            if (require.specified('khoaijs')) {
+                require(['khoaijs'], function (Khoai) {
+                    Khoai.Flag = module;
+                });
+            }
+
+            root.Flag = module;
+
+            return module;
         });
     } else {
-        root.Flag = factory();
+        var module = factory();
+
+        if (root.Khoai) {
+            root.Khoai.Flag = module;
+        }
+
+        root.Flag = module;
     }
 }(this, function () {
     "use strict";
